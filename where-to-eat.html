@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where To Eat</title>
+    <link rel="stylesheet" href="/css/stylewheretoeat.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        if (localStorage.getItem('isLoggedIn') !== 'true' && !window.location.href.includes("homepage.html")) {
+     Swal.fire({
+         icon: 'warning',
+         title: 'Access Denied!',
+         text: 'You need to login first.',
+         showConfirmButton: false,
+         timer: 2000
+     }).then(() => {
+         window.location.href = "homepage.html";
+     });
+ }
+ 
+    </script>
+    <script>
+         $(document).ready(function () {
+            $(".activity-item").on({
+  mouseenter: function(){
+    $(this).css("background-color", "lightblue");
+  },
+  mouseleave: function(){
+    $(this).css("background-color", "white");
+  },
+  
+});
+        });
+    </script>
+</head>
+<body>
+    <!-- Video-wheretoeat -->
+    <header class="hero">
+        <div class="container">
+            <h1 class="hero-title">Where To Eat</h1>
+            <p class="hero-subtitle">Savor fresh, local flavors while enjoying stunning views that make every meal memorable.</p>
+            <video class="hidden-xs hidden-sm hidden-md hidden-custom videosize embed-responsive-item" autoplay="autoplay" loop="loop" >
+                <source src="/video/eat.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </header>
+    <!-- Video-wheretoeat End -->
+
+    <!-- Restaurant-wheretoeat -->
+    <section class="activities">
+        <div class="container">
+            <h2 class="section-title">Restaurants</h2>
+            <div class="activity-grid">
+
+                <div class="activity-item">
+                    <img src="/image/3Atlantis Restaurant.jpg" alt="Restaurants 1" class="activity-image">
+                    <h3 class="activity-title">Atlantis Restorant</h3>
+                    <p class="activity-description">This restaurant specializes in Indonesian cuisine, particularly Minangkabau dishes, which are known for their rich flavors and use of spices. 
+                        Visitors often highlight the authenticity of the local dishes and the warm atmosphere.
+                         The restaurant is a popular choice for both locals and tourists who want to experience traditional West Sumatran food. </p>
+                    
+                </div>
+                <div class="activity-item">
+                    <img src="/image/7Le Bajo.jpg" alt="Restaurants 2" class="activity-image">
+                    <h3 class="activity-title">Le Bajo</h3>
+                    <p class="activity-description">It's a popular spot for both locals and tourists, known for its great food, relaxing ambiance, and friendly service. 
+                        Many visitors enjoy the fresh seafood and pasta, with the outdoor seating area offering beautiful views, making it a perfect place to unwind.
+                    </p>
+                </div>
+                <div class="activity-item">
+                    <img src="/image/6Escape Bajo.jpg" alt="Restaurants 3" class="activity-image">
+                    <h3 class="activity-title">Escape Bajo</h3>
+                    <p class="activity-description"> Casual restaurant known for its cozy ambiance and a mix of Indonesian and Western dishes. It's popular for its stunning sunset views and laid-back vibe, making it a great spot to relax after a day of exploration.
+                         Many visitors enjoy the quality of the food and the friendly staff, with dishes like pizza and seafood being frequently recommended.
+                    </p>
+                </div>
+                <div class="activity-item">
+                    <img src="/image/10Senja Eatery.jpeg.jpg" alt="Restaurant 4" class="activity-image">
+                    <h3 class="activity-title">Senja Eatery</h3>
+                    <p class="activity-description">The restaurant emphasizes fresh ingredients, particularly seafood, and is popular for its beautiful sunset views. 
+                        Guests often commend the friendly service and relaxed vibe, making it an ideal spot for enjoying a meal after a day of exploring.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="activities">
+        <div class="container">
+            <h2 class="section-title">Coffee Shops</h2>
+            <div class="activity-grid">
+
+                <div class="activity-item">
+                    <img src="/image/Cafe Melinjo.jpg" alt="CoffeShops 1" class="activity-image">
+                    <h3 class="activity-title">Cafe Melinjo</h3>
+                    <p class="activity-description">This café presents a relaxed atmosphere, suitable for relaxing with a beautiful view while enjoying healthy food and refreshing drinks. 
+                        This place is known for its friendly service and warm atmosphere, becoming a favorite of tourists and locals alike. </p>
+                    
+                </div>
+                <div class="activity-item">
+                    <img src="/image/mimamori cafe.jpg" alt="CoffeShops 2" class="activity-image">
+                    <h3 class="activity-title">Mimamori Bajo</h3>
+                    <p class="activity-description">A restaurant with a concept that combines Japanese flavors with local touches, 
+                        offering a unique dining experience in Labuan Bajo. It is known for its serene atmosphere, modern interior, and fresh sushi and seafood dishes. 
+                    </p>
+                </div>
+                <div class="activity-item">
+                    <img src="/image/molas cafe.jpg" alt="CoffeShops 3" class="activity-image">
+                    <h3 class="activity-title">Molas Cafe</h3>
+                    <p class="activity-description"> Casual cafe known for its cozy ambiance and a mix of Indonesian and Western dishes. It's popular for its stunning sunset views and laid-back vibe, making it a great spot to relax after a day of exploration.
+                         Many visitors enjoy the quality of the food and the friendly staff, with dishes like pizza and seafood being frequently recommended.
+                    </p>
+                </div>
+                <div class="activity-item">
+                    <img src="/image/Casa Selini Cafe.jpeg.jpg" alt="CoffeShops 4" class="activity-image">
+                    <h3 class="activity-title">Casa Selini Cafe</h3>
+                    <p class="activity-description">Well-known for offering a mix of Greek and Indonesian cuisine in a cozy setting. Guests enjoy its fresh seafood, salads,
+                         and vegetarian-friendly options. The cafe has an inviting atmosphere, with good reviews mentioning both the food and service.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Restaurant-wheretoeat End -->
+</body>
+</html>

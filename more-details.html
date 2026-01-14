@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Details</title>
+    <link rel="stylesheet" href="/css/stylemoredetails.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        if (localStorage.getItem('isLoggedIn') !== 'true' && !window.location.href.includes("homepage.html")) {
+     Swal.fire({
+         icon: 'warning',
+         title: 'Access Denied!',
+         text: 'You need to login first.',
+         showConfirmButton: false,
+         timer: 2000
+     }).then(() => {
+         window.location.href = "homepage.html";
+     });
+ }
+ 
+    </script>
+</head>
+<style>
+    /* Style tag for table properties */
+    table {
+            width: 70%;
+            border-collapse: collapse;
+            margin: auto;
+        }
+
+        h1{
+            margin-top: 5%;
+            text-align: center;
+            font-size: 250%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #2d5e3e;
+            color: #ffffff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+</style>
+
+<body>
+    <!-- Video-detail -->
+    <header class="hero">
+        <div class="container">
+            <h1 class="hero-title">More Details</h1>
+            <p class="hero-subtitle">Detail of our Activities, Restaurants and Accomodation</p>
+            <video class="hidden-xs hidden-sm hidden-md hidden-custom videosize embed-responsive-item" autoplay="autoplay" loop="loop" >
+                <source src="/video/whattodo.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </header>
+    <!-- Video-detail End -->
+    
+<!-- table activities -->
+    <table>
+        <h1>Activities</h1>
+
+        <tr>
+            <th>Activities</th>
+            <th>Price List</th>
+        </tr>
+        <tr>
+            <td>See the Komodo Dragons</td>
+            <td> 
+                <ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 5/5</li>
+                    <li>Price:150,000 - 225,000 IDR per person.</li>
+                    <li>Location: Komodo National Park, Nusa Tenggara Tim.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Snorkeling, Swimming, and Diving</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 5/5</li>
+                    <li>Price:450,000 - 1,050,000 IDR per person</li>
+                    <li>Location: Batu Bolong and Manta Point, Nusa Tenggara Tim.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Hiking and Exploring</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price: Start from 150,000 IDR per person</li>
+                    <li>Location: Padar Island, Labuan Bajo Nusa Tenggara.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Boat Tour and Watching Sunset</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price: Start from 300,000 - 750,000 IDR per person</li>
+                    <li>Location:Labuan Bajo, Nusa Tenggara Timur.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <a href="activity-booking.html" class="booking-button">Booking Now</a>
+<!-- table activities end -->
+
+<!-- table Accomodation  -->
+    <table>
+        <h1>Accomodation</h1>
+
+        <tr>
+            <th>Hotels</th>
+            <th>Price List</th>
+        </tr>
+        <tr>
+            <td>Bintang Flores Hotel</td>
+            <td> 
+                <ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price: Start from IDR 826.000 per night</li>
+                    <li>Location: JL Binako, Labuan Bajo, Kec. Komodo, Flores, Nusa Tenggara Tim, 86554.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Golo Hilltop Hotel</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price: Start from IDR 826.000 per night</li>
+                    <li>Location: JL Binako, Labuan Bajo, Kec. Komodo, Flores, Nusa Tenggara Tim, 86554.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Kasuwari Hotel</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price: Start from IDR 487.800 per night</li>
+                    <li>Location: Jl. H. Ishaka No.15 86754 Labuan Bajo Nusa Tenggara.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Sylvia Hotel & Resort Komodo</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,3/5</li>
+                    <li>Price: Start from IDR 1.530.000 per night</li>
+                    <li>Location:Jl. Jend. Soeharto No.49 - 51, Naikoten I, Kec. Kota Raja, Kota Kupang, Nusa Tenggara Timur, 40116.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <a href="accomodation-booking.html" class="booking-button">Booking Now</a>
+<!-- table Accomodation end -->
+    
+<!-- table restaurant  -->
+    <table>
+        <h1>Restaurant & Coffee Shops</h1>
+
+        <tr>
+            <th>Restaurant & Coffee Shops</th>
+            <th>Price List</th>
+        </tr>
+        <tr>
+            <td>Atlantis Restaurant</td>
+            <td> 
+                <ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price:Start from IDR 40.000-300.000</li>
+                    <li>Location: Labuan Bajo, Komodo, West Manggarai Regency, East Nusa Tenggara 86757.</li>
+                    <li>
+                        Recommended Menu:
+                        <ol style="margin-left: 2%;">
+                            <li>Grill Kerapu Labuan Bajo</li>
+                            <li>Dulang Seafood</li>
+                            <li>Freid Rice On The Rock</li>
+                        </ol>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Le Bajo</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,8/5</li>
+                    <li>Price: Start from IDR 10.000-200.000</li>
+                    <li>Location: Jl. Ande Bole, Labuan Bajo, Kec. Komodo, Kabupaten Manggarai Barat, Nusa Tenggara Tim. 86554
+                    </li>
+                    <li>
+                        Recommended Menu:
+                        <ol style="margin-left: 2%;">
+                            <li>Freid Chicken Kampu</li>
+                            <li>Banana Baked</li>
+                            <li>Banana Cake</li>
+                        </ol>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Escape Bajo</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price: Start from IDR 50.000-150.000</li>
+                    <li>Location:Jl. Binongko, Labuan Bajo, Flores 86554.
+                    </li>
+                    <li>
+                        Recommended Menu:
+                        <ol style="margin-left: 2%;">
+                            <li>Cheese Cake</li>
+                            <li>Chicken Cordon Blue</li>
+                        </ol>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Senja Eatery</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4/5</li>
+                    <li>Price: Start from IDR 10.000-30.000</li>
+                    <li>Location:Jalan Soekarno Hatta 86754 Labuan Bajo Nusa Tenggara Timur.
+                    </li>
+                    <li>
+                        Recommended Menu:
+                        <ol style="margin-left: 2%;">
+                            <li>Mix Rice Manggarai</li>
+                            <li>Chicken Betutu</li>
+                            <li>Satay Lilit</li>
+                        </ol>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Cafe Melinjo</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price: Start from IDR 30.000-100.000</li>
+                    <li>Location:Jl. Soekarno Hatta Marina Labuan Bajo & Pelabuhan Eksekutif lantai 2, Labuan Bajo, Flores Indonesia.
+                    </li>
+                    <li>
+                        Recommended Menu:
+                        <ol style="margin-left: 2%;">
+                            <li>Belinjo Benedict</li>
+                            <li>Avocado Power Toast</li>
+                        </ol>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Casa Selini Cafe</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price: Start from IDR 30.000-100.000</li>
+                    <li>Location:Jl Soekarno Hatta 7, Labuan Bajo, Flores Indonesia
+                    </li>
+                    <li>
+                        Recommended Menu:
+                        <ol style="margin-left: 2%;">
+                            <li>Greek Omelet</li>
+                            <li>Chicken Curry with Pita</li>
+                            <li>Freid Chicken</li>
+                        </ol>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Mimamori Bajo</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price: Start from IDR 30.000-100.000</li>
+                    <li>Location:Jl. Soekarno Hatta, Labuan Bajo, Kec. Komodo, Kabupaten Manggarai Barat, Nusa Tenggara Tim. 86754
+                    </li>
+                    <li>
+                        Recommended Menu:
+                        <ol style="margin-left: 2%;">
+                            <li>Tropical Smoothie Bowl</li>
+                            <li>Cake Sifon Orange</li>
+                            <li>Beef Bacon</li>
+                            <li>Fruit Salad Summer with Lime and Honey</li>
+                            <li>Baguette</li>
+                        </ol>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Molas Cafe</td>
+            <td><ul style="text-align: left;margin-left: 3%;">
+                    <li>Rating: 4,5/5</li>
+                    <li>Price: Start from IDR 30.000-100.000</li>
+                    <li>Location:Jalan Soekarno Hatta 86754 Labuan Bajo Nusa Tenggara Timur.
+                    </li>
+                    <li>
+                        Recommended Menu:
+                        <ol style="margin-left: 2%;">
+                            <li>Satay </li>
+                            <li>Rendang Quesidilla
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <a href="restaurant-booking.html" class="booking-button">Booking Now</a>
+ <!-- table restaurant end -->
+    <br>
+    
+</body>
+</html>

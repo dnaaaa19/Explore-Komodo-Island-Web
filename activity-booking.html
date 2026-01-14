@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <link rel="stylesheet" href="/css/stylebooking.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function() {
+            $('#bookingForm').on('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Clear previous error messages
+                $('.error').text('');
+
+                // Validate form fields
+                let isValid = true;
+
+                if ($('#name').val().trim() === '') {
+                    $('#nameError').text('Please enter your name.');
+                    isValid = false;
+                }
+
+                if ($('#email').val().trim() === '') {
+                    $('#emailError').text('Please enter your email.');
+                    isValid = false;
+                }
+
+                if ($('#date').val() === '') {
+                    $('#dateError').text('Please select a booking date.');
+                    isValid = false;
+                }
+
+                if ($('#activity').val() === '') {
+                    $('#activityError').text('Please select an activity.');
+                    isValid = false;
+                }
+
+                // If the form is valid, show a confirmation message
+                if (isValid) {
+                    const name = $('#name').val();
+                    const email = $('#email').val();
+                    const date = $('#date').val();
+                    const activity = $('#activity').val();
+
+                     Swal.fire({
+                        title: 'Booking Confirmed!',
+                        html: `
+                            <p><strong>Name:</strong> ${name}</p>
+                            <p><strong>Email:</strong> ${email}</p>
+                            <p><strong>Date:</strong> ${date}</p>
+                            <p><strong>Activity:</strong> ${activity}</p>
+                        `,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }); // Reset the form
+                    $('#bookingForm')[0].reset();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Booking Form</h1>
+    <div class="booking-form">
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" >
+                <span class="error" id="nameError"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" >
+                <span class="error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+                <label for="date">Booking Date:</label>
+                <input type="date" id="date" name="date" >
+                <span class="error" id="dateError"></span>
+            </div>
+            <div class="form-group">
+                <label for="activity">Select Activity:</label>
+                <select id="activity" name="activity" >
+                    <option value="">--Please select an activity--</option>
+                    <option value="komodo_dragons">See the Komodo Dragons</option>
+                    <option value="snorkeling">Snorkeling, Swimming, and Diving</option>
+                    <option value="hiking">Hiking and Exploring</option>
+                    <option value="boat_tour">Boat Tour and Watching Sunset</option>
+                </select>
+                <span class="error" id="activityError"></span>
+            </div>
+            <button type="submit">Submit Booking</button>
+        </form>
+    </div>
+</body>
+</html>

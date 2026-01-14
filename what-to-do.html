@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What To Do</title>
+    <link rel="stylesheet" href="/css/stylewhattodo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+       if (localStorage.getItem('isLoggedIn') !== 'true' && !window.location.href.includes("homepage.html")) {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Access Denied!',
+        text: 'You need to login first.',
+        showConfirmButton: false,
+        timer: 2000
+    }).then(() => {
+        window.location.href = "homepage.html";
+    });
+}
+
+    </script>
+    
+    <script>
+         $(document).ready(function () {
+            $(".activity-item").on({
+  mouseenter: function(){
+    $(this).css("background-color", "lightblue");
+  },
+  mouseleave: function(){
+    $(this).css("background-color", "white");
+  },
+  
+});
+        });
+    </script>
+</head>
+<body>
+    <!-- Video-whattodo -->
+    <header class="hero">
+        <div class="container">
+            <h1 class="hero-title">What To Do</h1>
+            <p class="hero-subtitle">Explore our offerings and discover what makes us special</p>
+            <video class="hidden-xs hidden-sm hidden-md hidden-custom videosize embed-responsive-item" autoplay="autoplay" loop="loop" >
+                <source src="/video/acitivity komodo.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </header>
+    <!-- Video-whattodo End -->
+
+    <!-- Activities-whattodo -->
+    <section class="activities">
+        <div class="container">
+            <h2 class="section-title">Activities</h2>
+            <div class="activity-grid">
+                <div class="activity-item">
+                    <img src="/image/komodo.jpg" alt="Activity 1" class="activity-image">
+                    <h3 class="activity-title">See the Komodo Dragons</h3>
+                    <p class="activity-description">Meet the world's largest reptiles, the Komodo Dragons, in their natural habitat. This tour provides a 
+                        rare opportunity to see these magnificent creatures on Komodo Island, while learning about their habits and unique ecosystem.</p>
+                </div>
+                <div class="activity-item">
+                    <img src="/image/diving.jpg" alt="Activity 2" class="activity-image">
+                    <h3 class="activity-title">Snorkeling and Diving</h3>
+                    <p class="activity-description">Enjoy the stunning underwater beauty of Komodo Island through snorkeling, 
+                        swimming, or diving. Discover coral reefs rich in biodiversity and various species of colorful fish in crystal 
+                        clear waters.
+                    </p>
+                </div>
+                <div class="activity-item">
+                    <img src="/image/hiking.jpg" alt="Activity 3" class="activity-image">
+                    <h3 class="activity-title">Hiking and Exploring</h3>
+                    <p class="activity-description"> Explore the natural beauty of Komodo Island by hiking the many stunning trekking trails.
+                         Witness the beauty of dramatic landscapes, diverse flora and mesmerizing marine panoramas as you explore these beautiful 
+                         islands.
+                    </p>
+                </div>
+                <div class="activity-item">
+                    <img src="/image/boat.jpg" alt="Activity 4" class="activity-image">
+                    <h3 class="activity-title">Boat Tour and Sunset</h3>
+                    <p class="activity-description">Join an amazing boat tour to explore the Komodo archipelago.
+                         Enjoy a relaxing experience watching the spectacular sunset on the horizon, creating a magical and unforgettable sight. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Activities-whattodo End -->
+</body>
+</html>

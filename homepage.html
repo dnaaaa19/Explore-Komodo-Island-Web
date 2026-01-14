@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>Komodo Island</title>
+    <link rel="stylesheet" href="/css/StyleHome.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        $(document).ready(function (e) {
+        // Show the forgot password form when "Forgot Password?" is clicked
+        $(".forgot-password").click(function (e) {
+          $("#login-form").hide();
+          $("#forgot-password-form").show();
+        });
+      
+        // Handle the forgot password form submission
+        $("#forgot-password-submit").submit(function (event) {
+          event.preventDefault();
+          const email = $("#email").val();
+      
+        });
+
+        // Show Register Form
+        $(".register-link").click(function () {
+            $("#login-form").hide();
+            $("#register-link").show();
+        });
+
+        // Show Login Form
+        $("#show-login").click(function () {
+            $("#register-link").hide();
+            $("#login-form").show();
+        });
+
+      });
+
+    </script>
+    <!-- login form if -->
+    
+    <script>
+        $(document).ready(function () {
+            const validUsername = "komodo";
+            const validPassword = "komodo123";
+            
+            $('#login-form').on('submit', function (event) {
+                event.preventDefault();
+    
+                // Get values of the inputs
+                let username = $('#username').val().trim();
+                let password = $('#password').val().trim();
+    
+                // Check if fields are empty
+                if (username === '' || password === '') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please fill in all fields!'
+                    });
+                } else if (username === validUsername && password === validPassword) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Successfully!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        $('#username').val('');
+                        $('#password').val('');
+                        localStorage.setItem('isLoggedIn', 'true');
+                        window.location.href = "what-to-do.html";
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Invalid Credentials!',
+                        text: 'Username or password is incorrect.'
+                    });
+                }
+            });
+    
+            // Prevent accessing pages if not logged in
+            if (localStorage.getItem('isLoggedIn') !== 'true' && !window.location.href.includes("homepage.html")) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Access Denied!',
+                    text: 'You need to login first.',
+                    showConfirmButton: false,
+                    timer: 2000
+                }).then(() => {
+                    window.location.href = "what-to-do.html";
+                });
+            }
+        });
+    </script>
+    
+    <!-- forget pw if -->
+    
+    <script>
+        $(document).ready(function () {
+            $('#forgot-password-submit').on('submit', function (event) {
+                event.preventDefault();
+    
+                // Ambil nilai input
+                let email = $('#email').val().trim();
+                let password = $('#passwordd').val().trim();
+                let confirmPassword = $('#confirmpassword').val().trim();
+    
+                // Validasi: Semua input harus diisi
+                if (email === '' || password === '' || confirmPassword === '') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'All fields must be filled out!'
+                    });
+                } else if (password !== confirmPassword) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Passwords do not match!',
+                        text: 'Please make sure both passwords are the same.'
+                    });
+                } else {
+                    // Jika validasi berhasil
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Reset Password Successfully!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        // Tampilkan login form, sembunyikan forgot password form
+                        $('#alert').show();
+                        $("#forgot-password-form").hide();
+                        $("#login-form").show();
+    
+                        // Bersihkan input
+                        $('#email').val('');
+                        $('#passwordd').val('');
+                        $('#confirmpassword').val('');
+                    });
+                }
+            });
+        });
+    </script>
+    
+    
+    
+    <!-- register form if -->
+    <script>
+        $(document).ready(function () {
+            $('#register-submit').on('submit', function (event) {
+                event.preventDefault();
+    
+                // Ambil nilai dari input
+                let name = $('#name').val().trim();
+                let email = $('#mail').val().trim();
+                let phone = $('#phone').val().trim();
+                let password = $('#ppassword').val().trim();
+    
+                // Validasi input
+                if (name === '') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Full Name cannot be empty!'
+                    });
+                } else if (email === '') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Email Address cannot be empty!'
+                    });
+                } else if (phone === '') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Phone Number cannot be empty!'
+                    });
+                } else if (password === '') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Password cannot be empty!'
+                    });
+                } else {
+                    // Jika validasi berhasil
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Register Successfully!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        // Bersihkan input setelah popup ditutup
+                        $('#name').val('');
+                        $('#mail').val('');
+                        $('#phone').val('');
+                        $('#ppassword').val('');
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+    $('.toggle-form')
+        .css({
+            'margin-top': '15px',
+            'color': '#007bff',
+            'font-size': '14px',
+            'cursor': 'pointer',
+            'text-decoration': 'underline',
+            'transition': 'color 0.3s ease'
+        })
+        .hover(
+            function() {
+                // Saat mouse masuk
+                $(this).css('color', '#0056b3');
+            },
+            function() {
+                // Saat mouse keluar
+                $(this).css('color', '#007bff');
+            }
+        );
+});
+    </script>
+
+    
+<body>
+    <!-- Video -->
+    <video class="hidden-xs hidden-sm hidden-md hidden-custom videosize embed-responsive-item" autoplay="autoplay" loop="loop" >
+        <source src="/video/Komodo_Video.mp4" type="video/mp4" />
+    </video>
+    <!-- Video End -->
+
+    <!-- welome text -->
+        <div class="welcome text">
+            <h1 style="font-size:50px;font-family: Arial, Helvetica, sans-serif;">Uncover<br>
+                The Beauty<br>Of Komodo Island
+            </h1>
+        </div>
+   
+    
+      <!--Login-->
+        <div class="Wrapper">
+            <form action="what-to-do.html" id="login-form" autocomplete="off">
+                <h1>Login</h1>
+
+                <div class="input-box" >
+                    <input id="username" type="text" placeholder="Username">
+                </div>
+
+                <div class="input-box">
+                    <input type="password" id="password" placeholder="Password" >
+                </div>
+
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me </label>
+                    <p class="forgot-password" onclick="showForgotPassword()">Forgot Password?</p>
+                </div>
+
+                <button id="login-formm" type="submit" class="btn">Login</button>
+
+                <div class="register-link">
+                    <P>Don't have an account? <a class="register-form">Register </a></P>
+                </div> 
+
+            </form>
+
+
+            <div id="forgot-password-form" style="display: none;">
+                <h2>Forgot Password</h2>
+                <form id="forgot-password-submit" autocomplete="off">
+                    <input type="email" id="email" placeholder="Enter your email">
+                    <input type="password" id="passwordd" placeholder="Enter your password">
+                    <input type="password" id="confirmpassword" placeholder="Confirm your password">
+                    <button class="forget-password" type="submit">Submit</button>
+                </form>
+                <p id="confirmation-text" style="display: none;">Reset password link has been sent to your email.</p>
+            </div>
+
+             <div id="register-link" style="display: none;">
+                <h2>Register</h2>
+                <form id="register-submit" autocomplete="off">
+                  <input type="text" id="name" placeholder="Full Name" >
+                  <input type="emaill" id="mail" placeholder="Email Address" >
+                  <input type="text" id="phone" placeholder="Phone Number" >
+                  <input type="password" id="ppassword" placeholder="Password" >
+                  <button type="submit">Register</button>
+                  <p class="toggle-form" id="show-login">Already have an account? Login</p>
+                </form>
+            </div>
+
+            
+
+         </div>
+      <!--Login End-->   
+</body>
+</html>

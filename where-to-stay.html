@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where To say</title>
+    <link rel="stylesheet" href="/css/stylewheretostay.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        if (localStorage.getItem('isLoggedIn') !== 'true' && !window.location.href.includes("homepage.html")) {
+     Swal.fire({
+         icon: 'warning',
+         title: 'Access Denied!',
+         text: 'You need to login first.',
+         showConfirmButton: false,
+         timer: 2000
+     }).then(() => {
+         window.location.href = "homepage.html";
+     });
+ }
+ 
+    </script>
+    <script>
+         $(document).ready(function () {
+            $(".activity-item").on({
+  mouseenter: function(){
+    $(this).css("background-color", "lightblue");
+  },
+  mouseleave: function(){
+    $(this).css("background-color", "white");
+  },
+ 
+});
+        });
+    </script>
+</head>
+<body>
+    <!-- Video-wheretostay -->
+    <header class="hero">
+        <div class="container">
+            <h1 class="hero-title">Where To Stay</h1>
+            <p class="hero-subtitle">Relax and unwind in the perfect spot that fits your style and budget.</p>
+            <video class="hidden-xs hidden-sm hidden-md hidden-custom videosize embed-responsive-item" autoplay="autoplay" loop="loop" >
+                <source src="/video/STAY KOMODO.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </header>
+    <!-- video-wheretostay-end -->
+
+<!-- Accomodation -->
+    <section class="activities">
+        <div class="container">
+            <h2 class="section-title">Accomodation</h2>
+            <div class="activity-grid">
+                <div class="activity-item">
+                    <img src="/image/1Bintang Flores Hotel(agoda.com).jpg" alt="Accomodation 1" class="activity-image">
+                    <h3 class="activity-title">Bintang Flores Hotel</h3>
+                    <p class="activity-description">The Bintang Flores Hotel is a five-storey hotel set in a spacious tropical garden. Drawing on Indonesian architectural influences, 
+                        The Bintang Flores Hotel combines local style and charm with modern conveniences and international standards of service.</p>
+                    
+                </div>
+                <div class="activity-item">
+                    <img src="/image/2Golo Hilltop Hotel(holidaycheck.com).jpeg.jpg" alt="Accomodation 2" class="activity-image">
+                    <h3 class="activity-title">Golo Hilltop Hotel</h3>
+                    <p class="activity-description">Golo Hilltop is a small Boutique Style hotel run by two Dutch women 
+                        and presents a pleasant family atmosphere.
+                    </p>
+    
+                </div>
+                <div class="activity-item">
+                    <img src="/image/3Kasuwari Hotel(agoda.com).jpg" alt="Accomodation 3" class="activity-image">
+                    <h3 class="activity-title">Kasuwari Hotel</h3>
+                    <p class="activity-description"> Kasuwari Hotel is located with easy access to famous tourist destinations in Labuan Bajo. 
+                        You can easily visit the mesmerizing Pink Beach, the stunning Padar Island, 
+                        or the Komodo National Park which offers incredible natural beauty. The hotel also provides an airport shuttle service to make your trip easier.
+                    </p>
+                       
+                </div>
+                <div class="activity-item">
+                    <img src="/image/4Sylvia Hotel & Resort Komodo(agoda.com).jpg" alt="Accomodation 4" class="activity-image">
+                    <h3 class="activity-title">Sylvia Hotel & Resort Komodo</h3>
+                    <p class="activity-description">Located on Waecicu Beach in Labuan Bajo, Sylvia Resort Komodo offers a beachfront swimming pool as well as
+                         regular speed boat trips to 
+                        Rinca Island and Komodo National Park. You can also enjoy various types of water activities at this resort. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Accomodation end -->
+</body>
+</html>

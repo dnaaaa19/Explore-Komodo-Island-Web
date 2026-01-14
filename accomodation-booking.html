@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <link rel="stylesheet" href="/css/stylebooking.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function() {
+            const prices = {
+                bintang_flores: 826000, // Harga per malam dalam IDR
+                golo_hilltop: 826000,
+                kasuwari: 487800,
+                sylvia: 1530000
+            };
+
+            $('#accomodation').on('change', function() {
+                const selectedAccommodation = $(this).val();
+                const price = prices[selectedAccommodation] || 0;
+                $('#priceDisplay').text(`Price per night: IDR ${price.toLocaleString()}`);
+                calculateTotal();
+            });
+
+            $('#checkinDate, #checkoutDate').on('change', function() {
+                calculateTotal();
+            });
+
+            function calculateTotal() {
+                const checkinDate = new Date($('#checkinDate').val());
+                const checkoutDate = new Date($('#checkoutDate').val());
+                const selectedAccommodation = $('#accomodation').val();
+                const pricePerNight = prices[selectedAccommodation] || 0;
+
+                if (checkinDate && checkoutDate && checkoutDate > checkinDate) {
+                    const nightCount = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+                    const totalCost = nightCount * pricePerNight;
+                    $('#totalDisplay').text(`Total Cost: IDR ${totalCost.toLocaleString()}`);
+                } else {
+                    $('#totalDisplay').text('');
+                }
+            }
+
+            $('#bookingForm').on('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Clear previous error messages
+                $('.error').text('');
+
+                // Validate form fields
+                let isValid = true;
+
+                if ($('#name').val().trim() === '') {
+                    $('#nameError').text('Please enter your name.');
+                    isValid = false;
+                }
+
+                if ($('#email').val().trim() === '') {
+                    $('#emailError').text('Please enter your email.');
+                    isValid = false;
+                }
+
+                if ($('#checkinDate').val() === '') {
+                    $('#checkinError').text('Please select a check-in date.');
+                    isValid = false;
+                }
+
+                if ($('#checkoutDate').val() === '') {
+                    $('#checkoutError').text('Please select a check-out date.');
+                    isValid = false;
+                }
+
+                if ($('#accomodation').val() === '') {
+                    $('#accomodationError').text('Please select an accommodation.');
+                    isValid = false;
+                }
+
+                // If the form is valid, show a confirmation message
+                if (isValid) {
+                    const name = $('#name').val();
+                    const email = $('#email').val();
+                    const checkinDate = $('#checkinDate').val();
+                    const checkoutDate = $('#checkoutDate').val();
+                    const accomodation = $('#accomodation').val();
+                    const price = prices[accomodation] || 0;
+                    const totalCost = $('#totalDisplay').text().replace(/[^0-9]/g, '') || 0;
+
+                    Swal.fire({
+                        title: 'Booking Confirmed!',
+                        html: `
+                            <p><strong>Name:</strong> ${name}</p>
+                            <p><strong>Email:</strong> ${email}</p>
+                            <p><strong>Check-in Date:</strong> ${checkinDate}</p>
+                            <p><strong>Check-out Date:</strong> ${checkoutDate}</p>
+                            <p><strong>Accommodation:</strong> ${accomodation}</p>
+                            <p><strong>Price per night:</strong> IDR ${price.toLocaleString()}</p>
+                            <p><strong>Total Cost:</strong> IDR ${parseInt(totalCost).toLocaleString()}</p>
+                        `,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        // Reset the form 
+                        $('#bookingForm')[0].reset(); // Reset the form
+                        $('#priceDisplay').text(''); // Clear price display
+                        $('#totalDisplay').text(''); // Clear total display
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Booking Form</h1>
+    <div class="booking-form">
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" >
+                <span class="error" id="nameError"></ <span class="error" id="nameError"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" >
+                <span class="error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+                <label for="checkinDate">Check-in Date:</label>
+                <input type="date" id="checkinDate" name="checkinDate" >
+                <span class="error" id="checkinError"></span>
+            </div>
+            <div class="form-group">
+                <label for="checkoutDate">Check-out Date:</label>
+                <input type="date" id="checkoutDate" name="checkoutDate" >
+                <span class="error" id="checkoutError"></span>
+            </div>
+            <div class="form-group">
+                <label for="accomodation">Select Accommodation:</label>
+                <select id="accomodation" name="accomodation" >
+                    <option value="">--Please select an accommodation--</option>
+                    <option value="bintang_flores">Bintang Flores Hotel</option>
+                    <option value="golo_hilltop">Golo Hilltop Hotel</option>
+                    <option value="kasuwari">Kasuwari Hotel</option>
+                    <option value="sylvia">Sylvia Hotel & Resort Komodo</option>
+                </select>
+                <span class="error" id="accomodationError"></span>
+                <div id="priceDisplay" style="margin-top: 10px; font-weight: bold;"></div>
+                <div id="totalDisplay" style="margin-top: 10px; font-weight: bold;"></div>
+            </div>
+            <button type="submit">Submit Booking</button>
+        </form>
+    </div>
+</body>
+</html>
